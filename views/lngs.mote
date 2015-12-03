@@ -1,0 +1,9 @@
+<p><h1>{{ title }}</h1></p>
+
+<form class="verify" action="/lngs" method="post">
+  <input type="text" name="nsrsbh" placeholder="纳税人识别号" /><br /><br />
+  <input type="text" name="nsrmc" placeholder="纳税人名称" /><br /><br />
+  <input type="text" name="fpdm" placeholder="发票代码" /><br /><br />
+  <input type="text" name="fphm" placeholder="发票号码" /><br /><br />
+  <button class="btn" type="submit" name="submit">验证</button>
+</form>
