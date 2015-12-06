@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/sparklemotion/mechanize.git
+  revision: 390fdea71a183a21cab24a2af2dd0f73ed8393c5
+  specs:
+    mechanize (2.7.4.beta3)
+      domain_name (~> 0.5, >= 0.5.1)
+      http-cookie (~> 1.0)
+      mime-types (>= 1.17.2, < 3)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 2.5, >= 2.5.2)
+      nokogiri (~> 1.6)
+      ntlm-http (~> 0.1, >= 0.1.1)
+      webrobots (>= 0.0.9, < 0.2)
+
 GEM
   remote: https://ruby.taobao.org/
   specs:
@@ -7,15 +21,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    mechanize (2.7.3)
-      domain_name (~> 0.5, >= 0.5.1)
-      http-cookie (~> 1.0)
-      mime-types (~> 2.0)
-      net-http-digest_auth (~> 1.1, >= 1.1.1)
-      net-http-persistent (~> 2.5, >= 2.5.2)
-      nokogiri (~> 1.4)
-      ntlm-http (~> 0.1, >= 0.1.1)
-      webrobots (>= 0.0.9, < 0.2)
     mime-types (2.99)
     mini_portile2 (2.0.0)
     mote (1.1.4)
@@ -36,7 +41,7 @@ PLATFORMS
 
 DEPENDENCIES
   cuba (~> 3.4.0)
-  mechanize (~> 2.7.0)
+  mechanize!
   mote
   mote-render
 

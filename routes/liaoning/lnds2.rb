@@ -1,21 +1,7 @@
+# 辽宁地税_自动验证
 require 'open-uri'
 require 'mechanize'
 require 'nokogiri'
-
-# 辽宁地税_自动验证
-# 前三位为221,第四、五位为非02(大连)、第六、七位大于等于07(年份)
-
-# 发票代码 221011270132
-# 发票号码 08248414
-
-# return
-# 购票日期 2012-09-27
-# 发票种类 微机发票
-# 纳税人名称 沈阳市皇姑区韩宝斋京都铜火锅店 
-# 发票名称 辽宁省地方税务统一发票(3联) 
-# 票面金额 * 
-# 发售税务机关 沈阳市皇姑区地方税务局征收科
-# 发票状态 正常发票  
 
 # 流程:
 
@@ -34,18 +20,37 @@ require 'nokogiri'
 #
 # 4. 返回的页面 (GBK编码) 中 <form name="sbcx_form"><table> 里就是结果信息
 
+# 前三位为221,第四、五位为非02(大连)、第六、七位大于等于07(年份)
 
-class Lnds < Cuba
+# 发票代码 221011270132
+# 发票号码 08248414
+
+# return
+# 购票日期 2012-09-27
+# 发票种类 微机发票
+# 纳税人名称 沈阳市皇姑区韩宝斋京都铜火锅店 
+# 发票名称 辽宁省地方税务统一发票(3联) 
+# 票面金额 * 
+# 发售税务机关 沈阳市皇姑区地方税务局征收科
+# 发票状态 正常发票  
+
+class Lnds2 < Cuba
   define do
     captcha_img = 'http://fpcx.lnsds.gov.cn/CheckNumImg/chkNum.jpg'
     captcha_url = 'http://fpcx.lnsds.gov.cn/jsp/fpzwcx/auto.jsp'
-    
+    verify_url = 'http://fpcx.lnsds.gov.cn/FpzwcxServlet'
+
     on 'captcha' do
       on get do
         agent = Mechanize.new
-        img = agent.get(captcha_img)
-        res.headers["Content-Type"] = "image/jpeg"
-        res.write img.body
+        agent.get(captcha_img) do |captcha|
+          if captcha.code = '200'
+            res.headers["Content-Type"] = "image/jpeg"
+            res.write captcha.body
+          else
+            # 验证码错误
+          end
+        end
       end
     end
 
@@ -55,7 +60,6 @@ class Lnds < Cuba
       end
       # 自动验证
       on post, param("fpdm"), param("fphm") do |fpdm, fphm|
-        verify_url = 'http://fpcx.lnsds.gov.cn/FpzwcxServlet'
         agent = Mechanize.new
         agent.get(captcha_img) do |img|
           agent.get(captcha_url) do |captcha|

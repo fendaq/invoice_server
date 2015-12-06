@@ -1,6 +1,8 @@
 <p><h1>{{ title }}</h1></p>
+
 <form class="verify" action="/lnds" method="post">
   <input type="text" name="fpdm" placeholder="发票代码" /><br /><br />
   <input type="text" name="fphm" placeholder="发票号码" /><br /><br />
+  <input type="text" name="yzm" size="13" placeholder="验证码" /><img src="/lnds/captcha" /><br /><br />
   <button class="btn" type="submit" name="submit">验证</button>
 </form>

@@ -4,4 +4,4 @@ gem 'cuba', '~> 3.4.0'
 gem 'mote'
 gem 'mote-render'
 
-gem 'mechanize', '~> 2.7.0'
+gem 'mechanize', :git => 'git://github.com/sparklemotion/mechanize.git'

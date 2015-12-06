@@ -1,0 +1,9 @@
+<p><h1>{{ title }}</h1></p>
+
+<form class="verify" action="/bjds" method="post">
+  <input type="text" name="fpdmnumber" placeholder="发票代码" /><br /><br />
+  <input type="text" name="fphmnumber" placeholder="发票号码" /><br /><br />
+  <input type="text" name="fppassword" placeholder="发票密码" /><br /><br />
+  <input type="text" name="rand" size="7" placeholder="验证码" /><img src="/bjds/captcha" /><br /><br />
+  <button class="btn" type="submit" name="submit">验证</button>
+</form>

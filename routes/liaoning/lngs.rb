@@ -1,6 +1,16 @@
+# 辽宁国税
 require 'open-uri'
 require 'mechanize'
 require 'nokogiri'
+
+# 流程: 
+# 无验证码, POST 验证地址 纳税人名称需要 GBK 编码
+# nsrsbh: 纳税人识别号 
+# nsrmc:  纳税人名称 (GBK)
+# fpdm:   发票代码
+# fphm:   发票号码
+#
+# 返回页面中 <div id="result"> 即验证结果
 
 # 该纳税人2015年02月13日购买过此种发票(营改增冠名发票)，还未进行验旧。
 # 210105071510462
@@ -10,15 +20,16 @@ require 'nokogiri'
 
 class Lngs < Cuba
   define do
+    page_url = 'http://wsbst.tax.ln.cn/fpxgxx.do?service=fpxgxxService&method=init'
+    verify_url = 'http://wsbst.tax.ln.cn/fpxgxx.do?service=fpxgxxService&method=getResult'
+
     on default do
       on get do
         render("lngs", title: "辽宁国税") 
       end
       
       on post, param("nsrsbh"), param("nsrmc"), param("fpdm"), param("fphm") do |nsrsbh, nsrmc, fpdm, fphm|
-        page_url = 'http://wsbst.tax.ln.cn/fpxgxx.do?service=fpxgxxService&method=init'
-        verify_url = 'http://wsbst.tax.ln.cn/fpxgxx.do?service=fpxgxxService&method=getResult'
-
+        
         agent = Mechanize.new
 
         data = {
