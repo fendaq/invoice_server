@@ -78,7 +78,8 @@ class Lnds < Cuba
           "fphm1" => fphm,
           "TABLE_ACTION" => "display",
           "TABLE_NAME" => "FP_ZWCX",
-          "checkNum" => yzm
+          # 辽宁地税会在 JS 中将验证码转为大写
+          "checkNum" => yzm.upcase
         }
         result = agent.post(verify_url, data)
         puts result.inspect
