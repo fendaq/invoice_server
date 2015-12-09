@@ -1,4 +1,4 @@
-ruby_files = Dir.glob('modules/**/*.rb') + ['app.rb']
+ruby_files = Dir.glob('routes/**/*.rb') + ['app.rb']
 view_files = Dir.glob('views/**/*')
 
 files = { ruby: ruby_files, view: view_files }
