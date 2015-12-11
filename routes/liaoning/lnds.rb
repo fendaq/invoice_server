@@ -1,7 +1,6 @@
 # 辽宁地税_自动验证
 require 'open-uri'
 require 'mechanize'
-require 'nokogiri'
 
 # 流程:
 
@@ -38,7 +37,7 @@ class Lnds < Cuba
   define do
     captcha_img = 'http://fpcx.lnsds.gov.cn/CheckNumImg/chkNum.jpg'
     captcha_url = 'http://fpcx.lnsds.gov.cn/jsp/fpzwcx/auto.jsp'
-    verify_url = 'http://fpcx.lnsds.gov.cn/FpzwcxServlet'
+    verify_url  = 'http://fpcx.lnsds.gov.cn/FpzwcxServlet'
 
     on 'captcha' do
       on get do
@@ -82,7 +81,7 @@ class Lnds < Cuba
           "checkNum" => yzm.upcase
         }
         result = agent.post(verify_url, data)
-        puts result.inspect
+        # puts result.inspect
         result_page = result.body.encode("UTF-8", "GBK")
         render("result", title: "验证结果", content: Nokogiri::HTML.parse(result_page).css("form[name=sbcx_form] table").first)
       end

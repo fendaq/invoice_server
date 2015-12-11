@@ -1,7 +1,6 @@
 # 辽宁国税
 require 'open-uri'
 require 'mechanize'
-require 'nokogiri'
 
 # 流程: 
 # 无验证码, POST 验证地址 纳税人名称需要 GBK 编码

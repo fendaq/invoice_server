@@ -44,5 +44,9 @@ Cuba.define do
     run Bjds
   end
 
+  on 'bjgs' do
+    run Bjgs
+  end
+
   # use Rack::Insight::App
 end

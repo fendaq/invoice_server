@@ -1,8 +1,6 @@
 # 北京地税
 require 'open-uri'
 require 'mechanize'
-require 'stringio'
-require 'base64'
 
 # 流程:
 #
@@ -71,11 +69,6 @@ class Bjds < Cuba
         render("result", title: "验证结果", content: result)
       end
     end
-  end
-
-  private
-  def save_session(some_str)
-    @jsessionid = some_str
   end
 end
 

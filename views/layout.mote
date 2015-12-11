@@ -37,6 +37,11 @@
             北京地税
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/bjgs">
+            北京国税
+          </a>
+        </li>
       </ul>
     </nav>
       <div class="container">
