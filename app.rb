@@ -13,6 +13,9 @@ Cuba.plugin Cuba::Safe
 # Provices specific modules
 Dir["./routes/**/*.rb"].each  { |rb| require rb }
 Dir["./models/**/*.rb"].each  { |rb| require rb }
+Dir["./helpers/**/*.rb"].each  { |rb| require rb }
+
+Cuba.plugin JsonHelper
 
 
 # View path
@@ -26,6 +29,10 @@ Cuba.use Rack::Static,
 Cuba.define do
   on root do
     render("home", title: "首页")
+  end
+
+  on 'api' do
+    run Api
   end
 
   on 'lngs' do
