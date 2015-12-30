@@ -15,7 +15,7 @@ Dir["./routes/**/*.rb"].each  { |rb| require rb }
 Dir["./models/**/*.rb"].each  { |rb| require rb }
 Dir["./helpers/**/*.rb"].each  { |rb| require rb }
 
-Cuba.plugin JsonHelper
+Cuba.plugin ApiHelpers
 
 
 # View path
